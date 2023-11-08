@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Header from './components/NavBar'
+import PageTracker from './components/PageTracker';
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
+        <PageTracker />
         {children}
       </body>
     </html>
