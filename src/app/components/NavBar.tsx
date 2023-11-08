@@ -1,10 +1,12 @@
 import SearchBar from "./SearchBar";
+import Image from 'next/image';
+import logo from '../../images/logo.svg'
 
-export default function Header() {
+export default function NavBar() {
   return (
-    <div className="flex flex-row item-center justify-center gap-10">
+    <div className="h-14 flex flex-row items-center justify-center gap-10 bg-white text-[#222222] font-avenir">
       <nav className="flex flex-row items-center gap-8">
-        <h2>Logo</h2>
+        <Image src={logo} alt="logo" width={118} height={26} />
         <a href="#">Browse</a>
         <a href="#">Community</a>
         <a href="#">Discussions</a>
