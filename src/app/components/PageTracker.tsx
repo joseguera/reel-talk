@@ -5,9 +5,9 @@ type PageProps = {
     pageId: number;
     back: string;
     next: string;
-    onPage: boolean;
     progress: number;
-  }[]
+  }[];
+  pageCount: number;
 }
 
 const PageTracker: FC<PageProps> = ({ pages }) => {
