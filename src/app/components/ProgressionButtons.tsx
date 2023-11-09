@@ -1,24 +1,34 @@
-import React, { FC, FunctionComponent } from 'react';
-import FormButton from '../components/FormButton';
+import React, { FC, FunctionComponent } from "react";
+import FormButton from "../components/FormButton";
 
 type PageProps = {
   pages: {
     pageId: number;
     back: string;
     next: string;
-    onPage: boolean;
     progress: number;
-  }[]
-}
+  }[];
+  pageCount: number;
+  getLastPage: () => void;
+  getNextPage: () => void;
+};
 
-const ProgressionButtons: FC<PageProps> = ({ pages }) => {
+const ProgressionButtons: FC<PageProps> = ({ pages, pageCount, getLastPage, getNextPage }) => {
   return (
     <div>
-        {pages.map((button) => {
-          return <button key={button.pageId}>{button.back}</button>
-        })}
+      {pageCount === 1 ? (
+        <div className="pt-10 flex flex-row gap-8">
+          <FormButton pageNav={() => {}}>Cancel</FormButton>
+        </div>
+        ) : (
+          <div className="pt-10 flex flex-row gap-8">
+            <FormButton pageNav={getLastPage}>Back</FormButton>
+            <FormButton pageNav={getNextPage}>Next</FormButton>
+          </div>
+        )
+      }
     </div>
-  )
-}
+  );
+};
 
 export default ProgressionButtons;
