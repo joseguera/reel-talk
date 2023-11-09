@@ -19,6 +19,9 @@ export default function Login() {
         </FormButton>
       </div>
       <div>Already have an account? <a href="#" className="text-[#FFA724]">Log in</a>.</div>
+      <FormButton>
+          Cancel
+      </FormButton>
     </main>
   );
 }

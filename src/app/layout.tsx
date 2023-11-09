@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Header from './components/NavBar'
-import PageTracker from './components/PageTracker';
+import Progression from './components/Progression';
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -13,15 +13,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+} : {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        <PageTracker />
-        {children}
+        <Progression>
+          {children}
+        </Progression>
       </body>
     </html>
   )

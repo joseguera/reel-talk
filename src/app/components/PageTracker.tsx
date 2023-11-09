@@ -1,6 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 
-export default function PageTracker() {
+type PageProps = {
+  pages: {
+    pageId: number;
+    back: string;
+    next: string;
+    onPage: boolean;
+    progress: number;
+  }[]
+}
+
+const PageTracker: FC<PageProps> = ({ pages }) => {
   return (
     <div className="w-[438px] py-14 flex flex-col align-center">
       <div className="flex flex-row justify-between items-center z-10">
@@ -27,3 +37,5 @@ export default function PageTracker() {
     </div>
   );
 }
+
+export default PageTracker;
