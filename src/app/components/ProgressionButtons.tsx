@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { FC, FunctionComponent } from 'react';
 import FormButton from '../components/FormButton';
 
-export default function ProgressionButtons() {
+type PageProps = {
+  pages: {
+    pageId: number;
+    back: string;
+    next: string;
+    onPage: boolean;
+    progress: number;
+  }[]
+}
+
+const ProgressionButtons: FC<PageProps> = ({ pages }) => {
   return (
     <div>
-        <FormButton>
-            Cancel
-        </FormButton>
+        {pages.map((button) => {
+          return <button key={button.pageId}>{button.back}</button>
+        })}
     </div>
   )
 }
+
+export default ProgressionButtons;
