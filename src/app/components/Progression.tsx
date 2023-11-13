@@ -31,15 +31,15 @@ const Progression: React.FC<Props> = ({ children }) => {
     },
     { pageId: 5, back: "/top-5-show-selection", next: "/", progress: 100 },
   ]);
-  const [pageCount, setPageCount] = React.useState(2);
+  const [pageCount, setPageCount] = React.useState(1);
 
   function getLastPage(): void {
-    setPageCount((prevPage) => prevPage - 1);
+    setPageCount((prevPage) => prevPage >= 1 ? prevPage - 1 : prevPage);
     console.log("click -");
   }
 
   function getNextPage(): void {
-    setPageCount((prevPage) => prevPage + 1);
+    setPageCount((prevPage) => prevPage <= 4 ? prevPage + 1 : prevPage);
     console.log("click +");
   }
 
