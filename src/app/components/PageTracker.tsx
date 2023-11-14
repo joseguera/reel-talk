@@ -13,6 +13,7 @@ type PageProps = {
 const PageTracker: FC<PageProps> = ({ pages, pageCount }) => {
 
   const [barProgress, setBarProgress] = useState('w-0');
+  const [currentPage, setCurrentPage] = useState('bg-[#FFFFFF99]');
 
   function getBarProgress() {
     if (pageCount === 1) {
@@ -37,21 +38,13 @@ const PageTracker: FC<PageProps> = ({ pages, pageCount }) => {
   return (
     <div className="w-[438px] py-14 flex flex-col align-center">
       <div className="flex flex-row justify-between items-center z-10">
-        <div className={`w-5 h-5 rounded-full bg-[${pageCount >= 1 ? "#FFA724" : "#6D6D6D"}] flex justify-center items-center`}>
-          <div className={`w-3 h-3 rounded-full bg-[${pageCount === 1 && "#FFFFFF99"}]`}></div>
-        </div>
-        <div className={`w-5 h-5 rounded-full bg-[${pageCount >= 2 ? "#FFA724" : "#6D6D6D"}] flex justify-center items-center`}>
-          <div className={`w-3 h-3 rounded-full bg-[${pageCount === 2 && "#FFFFFF99"}]`}></div>
-        </div>
-        <div className={`w-5 h-5 rounded-full bg-[${pageCount >= 3 ? "#FFA724" : "#6D6D6D"}] flex justify-center items-center`}>
-          <div className={`w-3 h-3 rounded-full bg-[${pageCount === 3 && "#FFFFFF99"}]`}></div>
-        </div>
-        <div className={`w-5 h-5 rounded-full bg-[${pageCount >= 4 ? "#FFA724" : "#6D6D6D"}] flex justify-center items-center`}>
-          <div className={`w-3 h-3 rounded-full bg-[${pageCount === 4 && "#FFFFFF99"}]`}></div>
-        </div>
-        <div className={`w-5 h-5 rounded-full bg-[${pageCount >= 5 ? "#FFA724" : "#6D6D6D"}] flex justify-center items-center`}>
-          <div className={`w-3 h-3 rounded-full bg-[${pageCount === 5 && "#FFFFFF99"}]`}></div>
-        </div>
+        {pages.map((page, idx) => {
+          return (
+          <div key={page.pageId} className={`w-5 h-5 rounded-full bg-[${pageCount >= idx+1 ? "#FFA724" : "#6D6D6D"}] flex justify-center items-center`}>
+            <div className={`w-3 h-3 rounded-full bg-[${pageCount === idx+1 && "#FFFFFF99"}]`}></div>
+          </div>
+          )
+        })}
       </div>
       <div className="h-1 w-[97%] pl-[11px] relative top-[-12px] bg-[#6D6D6D]">
         <div className={`h-1 ${barProgress} bg-[#FFA724]`}></div>
